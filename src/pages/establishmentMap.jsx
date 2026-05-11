@@ -2,7 +2,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import React, { useEffect, useState } from "react";
 import Map, { Marker } from "react-map-gl";
 
-const API_URL = "https://wellbe-api.onrender.com/api/v1/establishment";
+const API_URL = process.env.REACT_APP_API_URL ? `${process.env.REACT_APP_API_URL}/establishment` : "";
 
 const SimpleMap = () => {
     const [viewport, setViewport] = useState({
@@ -16,13 +16,20 @@ const SimpleMap = () => {
 
     // Fetch Establishments from API
     useEffect(() => {
+        if (!API_URL) {
+            setEstablishments([]);
+            return;
+        }
         fetch(API_URL)
             .then((response) => response.json())
             .then((data) => {
                 console.log("Fetched Data:", data);
-                setEstablishments(data);
+                setEstablishments(Array.isArray(data) ? data : []);
             })
-            .catch((error) => console.error("Error fetching establishments:", error));
+            .catch((error) => {
+                console.error("Error fetching establishments:", error);
+                setEstablishments([]);
+            });
     }, []);
 
     // Function to open Google Maps Directions
@@ -48,8 +55,8 @@ const SimpleMap = () => {
                 }}
             >
                 {establishments.map((establishment) => {
-                    const lat = parseFloat(establishment.Location.location_latitude);
-                    const lng = parseFloat(establishment.Location.location_longitude);
+                    const lat = parseFloat(establishment.Location?.location_latitude);
+                    const lng = parseFloat(establishment.Location?.location_longitude);
 
                     if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
                         console.error(`Skipping invalid location for ${establishment.establishment_label}:`, lat, lng);

@@ -7,6 +7,7 @@ export const creationEstablishment = async (data) => {
         return response.data;
     } catch (error) {
         console.error("❌ Error creating establishment:", error);
+        return { success: false };
     }
 };
 
@@ -19,6 +20,7 @@ export const getEstablishments = async (type, city, country) => {
         return response.data;
     } catch (error) {
         console.error("❌ Error fetching establishments:", error);
+        return [];
     }
 };
 
@@ -31,6 +33,7 @@ export const getEstablishmentById = async (establishmentId) => {
         return response.data;
     } catch (error) {
         console.error("❌ Error fetching establishment:", error);
+        return null;
     }
 };
 
@@ -41,6 +44,7 @@ export const fetchTypesEstablishment = async () => {
         return response.data;
     } catch (error) {
         console.error("❌ Error fetching establishment types:", error);
+        return [];
     }
 };
 
@@ -51,6 +55,7 @@ export const fetchWorksEstablishment = async () => {
         return response.data;
     } catch (error) {
         console.error("❌ Error fetching work locations:", error);
+        return [];
     }
 };
 
@@ -63,6 +68,7 @@ export const getEstablishmentServices = async (establishmentId) => {
         return response.data;
     } catch (error) {
         console.error("❌ Error fetching services:", error);
+        return [];
     }
 };
 
@@ -75,6 +81,7 @@ export const getEstablishmentPersonnels = async (establishmentId) => {
         return response.data;
     } catch (error) {
         console.error("❌ Error fetching services:", error);
+        return [];
     }
 };
 
@@ -87,6 +94,7 @@ export const getEstablishmentSchedules = async (establishmentId) => {
         return response.data;
     } catch (error) {
         console.error("❌ Error fetching services:", error);
+        return [];
     }
 };
 
@@ -97,5 +105,6 @@ export const fetchEstablishmentById = async (id) => {
         return response.data;
     } catch (error) {
         console.error(`❌ Error fetching establishment with ID ${id}:`, error);
+        return null;
     }
 };

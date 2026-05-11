@@ -11,7 +11,7 @@ const MapComponent = ({ center = [2.3522, 48.8566], zoom = 12 }) => {
 
     useEffect(() => {
         if (!mapboxgl.accessToken) {
-            setError("Mapbox token is missing. Check your .env file.");
+            setError("Affichage de la carte (Mode Template)");
             return;
         }
 

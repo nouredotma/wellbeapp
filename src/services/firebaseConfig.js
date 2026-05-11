@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { FacebookAuthProvider, GoogleAuthProvider, OAuthProvider, getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAYTzYr8IrsQMfMC7fSULLq8mLJNEUriW4",
-    authDomain: "wellbe-246d9.firebaseapp.com",
-    projectId: "wellbe-246d9",
-    storageBucket: "wellbe-246d9.firebasestorage.app",
-    messagingSenderId: "904241452954",
-    appId: "1:904241452954:web:02b298818bebd0f11fcc23",
-    measurementId: "G-YFPP07S9VM"
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: "",
+    measurementId: ""
 };
 
 // Initialize Firebase
