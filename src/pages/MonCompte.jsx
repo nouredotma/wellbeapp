@@ -205,11 +205,11 @@ const MonCompte = () => {
           // Ensure appointmentsData is not undefined
           try {
             const schedule = await fetchScheduleById(appt.schedule_uuid)
-            const establishment = await fetchEstablishmentById(schedule.establishment_uuid)
+            const establishment = schedule ? await fetchEstablishmentById(schedule.establishment_uuid) : null
 
             return {
               ...appt,
-              establishment_name: establishment.establishment_name || "Établissement inconnu",
+              establishment_name: establishment?.establishment_name || "Établissement inconnu",
             }
           } catch (err) {
             console.error(`⚠️ Failed to fetch schedule/establishment for appointment ${appt.appointment_id}`, err)

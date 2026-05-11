@@ -13,7 +13,7 @@ import { fetchEstablishmentById, fetchScheduleById } from "../services/appointme
 const fetchUserProfileByUUID = async (userUUID) => {
     try {
         const response = await apiClient.get(`/users/${userUUID}`);
-        return response.data;  // Assumes response includes user_name & user_first_name
+        return response.data || { user_first_name: "Client", user_name: "Inconnu" };
     } catch (error) {
         console.error(`❌ Failed to fetch user profile for ${userUUID}:`, error);
         return { user_first_name: "Client", user_name: "Inconnu" };  // Fallback
@@ -33,7 +33,7 @@ const Calendary = () => {
     const loadAppointments = async () => {
         try {
             const response = await apiClient.get(`/appointments`);
-            const allAppointments = response.data;
+            const allAppointments = response.data || [];
 
             const establishmentAppointments = [];
 

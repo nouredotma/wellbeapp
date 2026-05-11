@@ -95,6 +95,10 @@ export const cities = [
         image: "https://focus.courrierinternational.com/2022/02/04/0/0/1920/1280/1280/0/60/0/50ae3aa_1644014741517-casablanca-maroc-expat.jpg",
     },
     {
+        name: "Rabat",
+        image: "https://images.unsplash.com/photo-1559586616-361e18714958?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80",
+    },
+    {
         name: "Tanger",
         image: "https://stayhere.ma/wp-content/uploads/2023/08/Explorez-le-Cap-Spartel-Tanger-Guide-Complet-pour-un-Sejour-Inoubliable-2048x1365.webp",
     },
