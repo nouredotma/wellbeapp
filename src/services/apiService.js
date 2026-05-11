@@ -107,10 +107,10 @@ apiClient.interceptors.response.use(
         if (url.includes("/type-establishments")) {
             data = mockData["/type-establishments"];
         } else if (url.includes("/establishment")) {
-            if (url.match(/\/establishment\/[^\/?]+/)) {
-                // Return single establishment if ID is in path
+            if (url.match(/\/establishment\/[a-zA-Z0-9-]+$/)) {
+                // Exact ID/UUID match (e.g., /establishment/123)
                 data = mockData["/establishment"][0];
-            } else {
+            } else if (url.includes("?") || url.endsWith("/establishment")) {
                 // Handle filtering
                 const queryString = url.split('?')[1] || "";
                 const params = new URLSearchParams(queryString);

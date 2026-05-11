@@ -83,10 +83,10 @@ export const Search = () => {
   const fetchTypesEstablishments = useCallback(async () => {
     try {
       const data = await fetchTypesEstablishment()
-      setEstablishmentTypes(data || []) // Ensure we always set an array
+      setEstablishmentTypes(Array.isArray(data) ? data : [])
     } catch (error) {
       console.error("Error fetching establishment types:", error)
-      setEstablishmentTypes([]) // Set empty array on error
+      setEstablishmentTypes([])
     }
   }, [])
 
@@ -188,8 +188,7 @@ export const Search = () => {
                   className="w-full h-12 mb-0 rounded-3xl border border-gray-300 pl-12 pr-4 text-gray-700 focus:outline-none focus:bg-gray-50 focus:ring-2 focus:ring-[#002366] focus:border-transparent transition-all"
                 />
                 <datalist id="establishments">
-                  {/* Add null check before mapping */}
-                  {establishmentTypes &&
+                  {Array.isArray(establishmentTypes) &&
                     establishmentTypes.length > 0 &&
                     establishmentTypes.map((type) => (
                       <option key={type.type_establishment_id} value={type.type_establishment_label} />
