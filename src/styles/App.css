@@ -1,0 +1,563 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "tomato";
+  src: url("../assets/fonts/Futura\ Book\ font.ttf") format("truetype");
+  font-style: normal;
+}
+
+/* Import Google fonts - Montserrat if not already imported */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap");
+
+/* Material Icons for navigation arrows */
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,200,0,0");
+
+:root {
+  --max-width: 1400px;
+  --border-radius: 8px;
+  --font-primary: "tomato", sans-serif;
+
+  /* Custom colors */
+  --color-background: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-secondary: #666666;
+  --color-accent: #000000;
+  --color-border: #e5e5e5;
+}
+
+/* Base styles */
+body {
+  font-family: var(--font-primary);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  line-height: 1.5;
+  /* Fix for mobile height issues */
+  height: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  height: 100%;
+}
+
+/* Container styles - MODIFIED to match header max-width */
+.container {
+  width: 100%;
+  max-width: 1152px; /* 6xl in Tailwind = 72rem = 1152px */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Hero section styles */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  background-color: #f5f5f5;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+
+/* Search form styles */
+.search-form {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: var(--border-radius);
+  padding: 1.5rem;
+}
+
+.search-input {
+  background: white;
+  border: none !important;
+  height: 48px !important;
+}
+
+/* Services section styles */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.service-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover img {
+  transform: scale(1.05);
+}
+
+.service-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: white;
+}
+
+/* Press section styles */
+.press-section {
+  background-color: black;
+  padding: 4rem 0;
+}
+
+.press-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.press-logo {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.press-logo:hover {
+  opacity: 1;
+}
+
+/* Benefits section styles */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.benefit-card {
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  text-align: center;
+}
+
+.benefit-stat {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Recruitment section styles */
+.recruitment-section {
+  background-color: #f5f5f5;
+  padding: 4rem 0;
+}
+
+.recruitment-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Footer styles */
+.footer {
+  background-color: black;
+  color: white;
+  padding: 3rem 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .search-form {
+    flex-direction: column;
+  }
+
+  .recruitment-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Button styles */
+.button-primary {
+  background-color: var(--color-accent);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.button-primary:hover {
+  background-color: #333;
+}
+
+.button-outline {
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.button-outline:hover {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+/* Input styles */
+.input-search {
+  width: 100%;
+  height: 48px;
+  padding: 0 1rem;
+  border-radius: var(--border-radius);
+  border: none;
+  background-color: white;
+}
+
+.input-search::placeholder {
+  color: var(--color-text-secondary);
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Additional utility classes */
+.text-gradient {
+  background: linear-gradient(to right, #000000, #333333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.backdrop-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.map-container {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+
+/* Login Page*/
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+}
+
+.add-establishment {
+  padding: 0.5rem 1rem;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.form-container {
+  background: white;
+  padding: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.login-form h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.forgot-password {
+  display: block;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.login-button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-account {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.create-account-button {
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  color: black;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+.react-calendar {
+  background-color: white;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Header (month & year) */
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 16px;
+  color: #2c3e50;
+  margin-bottom: 8px;
+}
+
+/* Weekdays (L M M J V S D) */
+.react-calendar__month-view__weekdays {
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: 12px;
+  color: #7b8a8b;
+}
+
+/* Days */
+.react-calendar__tile {
+  text-align: center;
+  padding: 10px 0;
+  color: #34495e;
+  cursor: pointer;
+}
+
+/* Today */
+.react-calendar__tile--now {
+  background-color: #d1fae5; /* Light green for today */
+  border-radius: 6px;
+}
+
+/* Selected date */
+.react-calendar__tile--active {
+  background-color: #4caf50; /* Green */
+  color: white;
+  border-radius: 6px;
+}
+
+/* Navigation buttons */
+.react-calendar__navigation__arrow {
+  font-size: 18px;
+  color: #34495e;
+}
+
+/* Disabled days (like previous month) */
+.react-calendar__tile--disabled {
+  color: #bdc3c7;
+}
+
+/* Add these animation styles at the end of the file */
+
+/* Animation for form transitions */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s ease forwards;
+}
+
+/* Improved form styling */
+.form-input-focus {
+  transition: all 0.3s ease;
+  border-color: #002366;
+  box-shadow: 0 0 0 2px rgba(0, 35, 102, 0.1);
+}
+
+/* Gradient button hover effect */
+.gradient-button-hover:hover {
+  background-size: 200% 200%;
+  animation: gradient-shift 2s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsive improvements for small screens */
+@media (max-width: 640px) {
+  .auth-container {
+    padding: 1rem;
+  }
+
+  .auth-form {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Add animation for slow zoom effect */
+@keyframes slow-zoom {
+  0% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-in-out infinite;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
