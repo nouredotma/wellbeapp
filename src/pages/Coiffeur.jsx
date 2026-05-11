@@ -176,7 +176,7 @@ const Coiffeur = () => {
                       className="w-full h-12 mb-0 rounded-3xl border border-gray-300 pl-12 pr-4 text-gray-700 focus:outline-none focus:bg-gray-50 focus:ring-2 focus:ring-[#002366] focus:border-transparent transition-all"
                     />
                     <datalist id="establishments">
-                      {establishmentTypes &&
+                      {Array.isArray(establishmentTypes) &&
                         establishmentTypes.length > 0 &&
                         establishmentTypes.map((type) => (
                           <option key={type.type_establishment_id} value={type.type_establishment_label} />

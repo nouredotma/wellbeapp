@@ -32,7 +32,7 @@ const Barbier = () => {
     const getEstablishmentTypes = async () => {
       try {
         const types = await fetchTypesEstablishment()
-        setEstablishmentTypes(types)
+        setEstablishmentTypes(Array.isArray(types) ? types : [])
       } catch (error) {
         console.error("Error fetching establishment types:", error)
       }
@@ -203,9 +203,10 @@ const Barbier = () => {
                       onChange={handleInputChange}
                     />
                     <datalist id="establishment-types">
-                      {establishmentTypes.map((type, index) => (
-                        <option key={index} value={type.type_establishment_label} />
-                      ))}
+                      {Array.isArray(establishmentTypes) &&
+                        establishmentTypes.map((type, index) => (
+                          <option key={index} value={type.type_establishment_label} />
+                        ))}
                     </datalist>
                   </div>
                 </div>

@@ -28,9 +28,8 @@ const PostFilterPage = () => {
   const fetchEstablishments = async () => {
     try {
       setLoading(true)
-      const establishments = await getEstablishments(serviceFilter, locationFilter, "")
-      console.log(establishments)
-      setEstablishments(establishments)
+      const data = await getEstablishments(serviceFilter, locationFilter, "")
+      setEstablishments(Array.isArray(data) ? data : [])
       setLoading(false)
     } catch (error) {
       console.error("Error fetching salons:", error)
@@ -143,7 +142,7 @@ const PostFilterPage = () => {
               </div>
             ) : establishments.length > 0 ? (
               <ul className="space-y-4">
-                {establishments.map((establishment, index) => (
+                {Array.isArray(establishments) && establishments.map((establishment, index) => (
                   <li
                     key={index}
                     className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition-shadow duration-200"

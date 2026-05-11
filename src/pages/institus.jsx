@@ -107,7 +107,7 @@ const Institus = () => {
     const getEstablishmentTypes = async () => {
       try {
         const types = await fetchTypesEstablishment()
-        setEstablishmentTypes(types)
+        setEstablishmentTypes(Array.isArray(types) ? types : [])
       } catch (error) {
         console.error("Error fetching establishment types:", error)
       }
@@ -167,9 +167,10 @@ const Institus = () => {
                       onChange={handleInputChange}
                     />
                     <datalist id="establishment-types">
-                      {establishmentTypes.map((type) => (
-                        <option key={type.id} value={type.name} data-id={type.id} />
-                      ))}
+                      {Array.isArray(establishmentTypes) &&
+                        establishmentTypes.map((type) => (
+                          <option key={type.id} value={type.name} data-id={type.id} />
+                        ))}
                     </datalist>
                   </div>
                 </div>
