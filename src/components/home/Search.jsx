@@ -7,6 +7,8 @@ import { fetchTypesEstablishment } from "../../services/establishmentService"
 
 import backgroundImage from "../../assets/wellbe-background.png"
 
+const PHRASES = ["en trois clics", "sans stress", "rapidement"]
+
 export const Search = () => {
   const [searchQuery, setSearchQuery] = useState("")
   const [query, setQuery] = useState("")
@@ -21,8 +23,6 @@ export const Search = () => {
   const [isTyping, setIsTyping] = useState(true)
   const [viewportHeight, setViewportHeight] = useState(window.innerHeight)
   const sectionRef = useRef(null)
-
-  const phrases = ["en trois clics", "sans stress", "rapidement"]
 
   // Update viewport height on resize and on initial load
   useEffect(() => {
@@ -42,10 +42,9 @@ export const Search = () => {
     // Clean up
     return () => window.removeEventListener("resize", handleResize)
   }, [])
-
   // Improved typing animation
   useEffect(() => {
-    const currentPhrase = phrases[activeIndex]
+    const currentPhrase = PHRASES[activeIndex]
     let typingTimer
     let deletingTimer
 
@@ -69,7 +68,7 @@ export const Search = () => {
         }, 50)
       } else {
         // Move to the next phrase
-        const nextIndex = (activeIndex + 1) % phrases.length
+        const nextIndex = (activeIndex + 1) % PHRASES.length
         setActiveIndex(nextIndex)
         setIsTyping(true)
       }
@@ -79,7 +78,7 @@ export const Search = () => {
       clearTimeout(typingTimer)
       clearTimeout(deletingTimer)
     }
-  }, [activeIndex, displayedPhrase, isTyping, phrases])
+  }, [activeIndex, displayedPhrase, isTyping])
 
   const fetchTypesEstablishments = useCallback(async () => {
     try {

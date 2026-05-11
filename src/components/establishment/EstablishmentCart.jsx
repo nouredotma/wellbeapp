@@ -13,7 +13,7 @@ export const EstablishmentCart = ({
         <li className="bg-white shadow-md rounded-lg p-4 flex transition duration-200 hover:border hover:border-black">
             <img
                 src={defaultImage}
-                alt={establishment.name || "Establishment"}
+                alt={establishment?.name || "Establishment"}
                 className="w-32 h-32 rounded-md object-cover"
             />
             <div className="ml-4 flex-1">
@@ -24,12 +24,12 @@ export const EstablishmentCart = ({
                     {establishment.establishment_description}
                 </p>
                 <p className="text-gray-600">
-                    {establishment.Location.location_city} -{" "}
-                    {establishment.Location.location_code_postal} -{" "}
-                    {establishment.Location.location_country}{" "}
+                    {establishment.Location?.location_city || "Ville inconnue"} -{" "}
+                    {establishment.Location?.location_code_postal || ""} -{" "}
+                    {establishment.Location?.location_country || ""}{" "}
                 </p>
                 <p className="text-yellow-500">
-                    ⭐ {establishment.rating} - {establishment.price} MAD
+                    ⭐ {establishment.rating || 0} - {establishment.price || 0} MAD
                 </p>
                 <p className="text-gray-500">
                     Avis

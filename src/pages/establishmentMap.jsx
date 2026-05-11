@@ -34,11 +34,29 @@ const SimpleMap = () => {
 
     // Function to open Google Maps Directions
     const openGoogleMapsDirections = () => {
-        if (!selectedEstablishment) return;
+        if (!selectedEstablishment || !selectedEstablishment.Location) return;
         const { location_latitude, location_longitude } = selectedEstablishment.Location;
         const url = `https://www.google.com/maps/dir/?api=1&destination=${parseFloat(location_latitude)},${parseFloat(location_longitude)}`;
         window.open(url, "_blank"); // Open Google Maps in a new tab
     };
+
+    const token = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+
+    if (!token) {
+        return (
+            <div className="w-full h-[500px] bg-slate-100 flex flex-col items-center justify-center rounded-lg border-2 border-dashed border-slate-300">
+                <div className="text-slate-500 font-medium text-lg mb-2">Carte en mode aperçu</div>
+                <div className="text-slate-400 text-sm text-center px-4">
+                    Veuillez configurer <code className="bg-slate-200 px-1 rounded">REACT_APP_MAPBOX_ACCESS_TOKEN</code> pour activer la carte interactive.
+                </div>
+                {establishments.length > 0 && (
+                    <div className="mt-4 text-xs text-slate-400">
+                        {establishments.length} établissements trouvés dans cette zone.
+                    </div>
+                )}
+            </div>
+        );
+    }
 
     return (
         <div style={{ width: "100%", height: "500px", position: "relative" }}>

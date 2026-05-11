@@ -11,6 +11,19 @@ const SimpleMap = ({ height = "400px", className = "" }) => {
     zoom: 12,
   })
 
+  const token = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN;
+
+  if (!token) {
+    return (
+      <div 
+        style={{ width: "100%", height: height }} 
+        className={`${className} bg-slate-100 flex items-center justify-center rounded-lg border-2 border-dashed border-slate-300 text-slate-400 text-sm`}
+      >
+        Mode Template : Carte désactivée (Token manquant)
+      </div>
+    );
+  }
+
   return (
     <div style={{ width: "100%", height: height }} className={className}>
       <Map
